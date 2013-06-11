@@ -63,7 +63,7 @@ loop do
 
   when "display contact"
     db.display_all_contacts
-    puts "Enter a user id to display"
+    puts "Enter a user to display: "
     user_id = gets.chomp
     puts db.display_particular_contact(user_id)
 
@@ -74,8 +74,8 @@ loop do
 
   when "delete"
     db.display_all_contacts
-    puts "Please enter a user id number to delete that contact"
-    user_id = gets.chomp.to_i
+    puts "Please enter a user attribute to delete that contact: "
+    user_id = gets.chomp
     puts "Are you sure you want to delete this entry?"
     user_confirm = gets.chomp
     if user_confirm.downcase == 'yes'
