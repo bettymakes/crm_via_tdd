@@ -25,31 +25,19 @@ class TestDatabase < MiniTest::Unit::TestCase
   end
 
   def test_display_contacts_by_attribute
-    @db.add(1000, "Frank", "Budkis", "weeddad420@hotmail.com", "blazeit")
+    @db.add(1000, "Frank", "Budkis", "weeddad420", "blazeit")
     @db.add(1001, "Fran", "Budis", "hotmail.com", "fgt")
-    assert_equal [1000, 1001],        @db.display_by_attribute("id")
-    assert_equal ["Frank", "Fran"],   @db.display_by_attribute("firstname")
-    assert_equal ["blazeit", "fgt"],  @db.display_by_attribute("notes")
-    assert_equal ["weeddad420@hotmail.com", "hotmail.com"], @db.display_by_attribute("email")
-    assert_equal ["Budkis", "Budis"], @db.display_by_attribute("lastname")
+    assert_equal [1000, 1001],                  @db.display_by_attribute("id")
+    assert_equal ["Frank", "Fran"],             @db.display_by_attribute("firstname")
+    assert_equal ["blazeit", "fgt"],            @db.display_by_attribute("notes")
+    assert_equal ["weeddad420", "hotmail.com"], @db.display_by_attribute("email")
+    assert_equal ["Budkis", "Budis"],           @db.display_by_attribute("lastname")
   end
 
-  # def test_display_all
-  #   @db.add(1000, "Frank", "Budkis", "weeddad420@hotmail.com", "blazeit")
-  #   @db.add(1001, "Fran", "Budis", "hotmail.com", "fgt")
+    def test_display_all
+    @db.add(1000, "Frank", "Budkis", "weeddad420@hotmail.com", "blazeit")
+    @db.add(1001, "Fran", "Budis", "hotmail.com", "fgt")
 
-  #   assert_equal "ID:         1000
-  #                 First name: Frank
-  #                 Last name:  Budkis
-  #                 Email:      weeddad420@hotmail.com
-  #                 Notes:      blazeit
-
-  #                 ID:         1001
-  #                 First name: Fran
-  #                 Last name:  Budis
-  #                 Email:      hotmail.com
-  #                 Notes:      fgt",
-  #                 puts @db.display_all
-  # end
+  end
 
 end
