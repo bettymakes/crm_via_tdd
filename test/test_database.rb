@@ -30,6 +30,8 @@ class TestDatabase < MiniTest::Unit::TestCase
     assert_equal [1000, 1001],        @db.display_by_attribute("id")
     assert_equal ["Frank", "Fran"],   @db.display_by_attribute("firstname")
     assert_equal ["blazeit", "fgt"],  @db.display_by_attribute("notes")
+    assert_equal ["weeddad420@hotmail.com", "hotmail.com"], @db.display_by_attribute("email")
+    assert_equal ["Budkis", "Budis"], @db.display_by_attribute("lastname")
   end
 
   # def test_display_all
