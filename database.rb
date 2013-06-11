@@ -39,7 +39,8 @@ class Database
     attribute_array
   end
 
-  def display_single_contact(attribute)
+  def display_single_contact(user_id)
+
   end
 
   def modify(user_id, attribute, value)

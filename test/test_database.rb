@@ -34,10 +34,10 @@ class TestDatabase < MiniTest::Unit::TestCase
     assert_equal ["Budkis", "Budis"],           @db.display_by_attribute("lastname")
   end
 
-  def test_display_all
-    @db.add(1000, "Frank", "Budkis", "weeddad420@hotmail.com", "blazeit")
-    @db.add(1001, "Fran", "Budis", "hotmail.com", "no")
-  end
+  # def test_display_all
+  #   @db.add(1000, "Frank", "Budkis", "weeddad420@hotmail.com", "blazeit")
+  #   @db.add(1001, "Fran", "Budis", "hotmail.com", "no")
+  # end
 
   def test_modify_contact
     @db.add(1000, "Frank", "Budkis", "weeddad420@hotmail.com", "blazeit")
@@ -45,6 +45,13 @@ class TestDatabase < MiniTest::Unit::TestCase
     assert_equal "Frank", contact.firstname
     @db.modify(1000, "firstname", "FRANCIS")
     assert_equal "FRANCIS", contact.firstname
+  end
+
+  def test_display_single_contact
+    @db.add(1000, "Frank", "Budkis", "weeddad420@hotmail.com", "blazeit")
+    @db.add(1001, "Fran", "Budis", "hotmail.com", "no")
+    result = @db.display_single_contact(1000)
+    assert result.include? "Frank"
   end
 
 

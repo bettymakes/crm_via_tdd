@@ -3,6 +3,7 @@ require_relative "../contact"
 
 
 class TestContact < MiniTest::Unit::TestCase
+
   def setup
     @contact = Contact.new(1000, "Frank", "Budkis", "email@email.com", "notes here")
   end
