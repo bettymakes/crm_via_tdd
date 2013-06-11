@@ -9,7 +9,7 @@ class TestContact < MiniTest::Unit::TestCase
 
   def test_assert_accessors
     assert_equal 1000, @contact.id
-    assert_equal "l33tb0y", @contact.firstname
+    assert_equal "Frank", @contact.firstname
     assert_equal "Budkis", @contact.lastname
     assert_equal "email@email.com", @contact.email
     assert_equal "notes here", @contact.notes
@@ -24,6 +24,11 @@ class TestContact < MiniTest::Unit::TestCase
     assert result.include? @contact.email
     assert result.include? @contact.notes
   end
+
+  # def test_modify_contact
+  #   @contact.update_contact("firstname", "FRANCIS")
+  #   assert_equal "FRANCIS", @contact.firstname
+  # end
 
 
 end

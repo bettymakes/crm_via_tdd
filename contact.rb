@@ -11,13 +11,12 @@ class Contact
   end
 
   def display_contact
-    # puts "ID:         #{@id}"
-    # puts "First name: #{@firstname}"
-    # puts "Last name:  #{@lastname}"
-    # puts "Email:      #{@email}"
-    # puts "Notes:      #{@notes}"
     "ID:         #{@id}\nFirst name: #{@firstname}\nLast name:  #{@lastname}\nEmail:      #{@email}\nNotes:      #{@notes}"
   end
+
+  # def update_contact(attribute, value)
+  #   test = method(attribute)
+  # end
 
 end
 

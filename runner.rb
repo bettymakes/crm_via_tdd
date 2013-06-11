@@ -43,7 +43,7 @@ loop do
   when "modify"
     db.display_all_contacts
     puts "Please enter information for the user you wish to modify:"
-    user_id = gets.chomp
+    user_id = gets.chomp.to_i
     puts "Enter the attribute you wish to modify:"
     user_attribute = gets.chomp
     puts "You selected #{user_attribute} to modify, are you sure ('yes' to confirm):"
@@ -52,7 +52,7 @@ loop do
     if user_confirm.downcase == 'yes'
       puts "Enter the updated value"
       user_modification = gets.chomp
-      db.modify_contact(user_id, user_attribute, user_modification)
+      db.modify(user_id, user_attribute, user_modification)
       db.display_all_contacts
     end
 

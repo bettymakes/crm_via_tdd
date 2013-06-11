@@ -20,24 +20,33 @@ class TestDatabase < MiniTest::Unit::TestCase
 
   def test_contact_lookup_helper_method
     @db.add(1000, "Frank", "Budkis", "weeddad420@hotmail.com", "blazeit")
-    assert @db.find_contact("Frank")
-    assert_equal nil, @db.find_contact("poop")
+    assert @db.find_contact(1000)
+    assert_equal nil, @db.find_contact(999)
   end
 
   def test_display_contacts_by_attribute
     @db.add(1000, "Frank", "Budkis", "weeddad420", "blazeit")
-    @db.add(1001, "Fran", "Budis", "hotmail.com", "fgt")
+    @db.add(1001, "Fran", "Budis", "hotmail.com", "no")
     assert_equal [1000, 1001],                  @db.display_by_attribute("id")
     assert_equal ["Frank", "Fran"],             @db.display_by_attribute("firstname")
-    assert_equal ["blazeit", "fgt"],            @db.display_by_attribute("notes")
+    assert_equal ["blazeit", "no"],            @db.display_by_attribute("notes")
     assert_equal ["weeddad420", "hotmail.com"], @db.display_by_attribute("email")
     assert_equal ["Budkis", "Budis"],           @db.display_by_attribute("lastname")
   end
 
-    def test_display_all
+  def test_display_all
     @db.add(1000, "Frank", "Budkis", "weeddad420@hotmail.com", "blazeit")
-    @db.add(1001, "Fran", "Budis", "hotmail.com", "fgt")
-
+    @db.add(1001, "Fran", "Budis", "hotmail.com", "no")
   end
+
+  def test_modify_contact
+    @db.add(1000, "Frank", "Budkis", "weeddad420@hotmail.com", "blazeit")
+    contact = @db.find_contact(1000)
+    assert_equal "Frank", contact.firstname
+    @db.modify(1000, "firstname", "FRANCIS")
+    assert_equal "FRANCIS", contact.firstname
+  end
+
+
 
 end

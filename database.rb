@@ -19,14 +19,10 @@ class Database
     end
   end
 
-  def find_contact(param)
+  def find_contact(user_id)
     result = nil
     @contacts.each do |contact|
-        result = contact if contact.id == param
-        result = contact if contact.firstname == param
-        result = contact if contact.lastname == param
-        result = contact if contact.email == param
-        result = contact if contact.notes == param
+        result = contact if contact.id == user_id
     end
     result
   end
@@ -34,11 +30,11 @@ class Database
   def display_by_attribute(attribute)
     attribute_array = []
     @contacts.each do |contact|
-      attribute_array << contact.id if "id" == attribute
+      attribute_array << contact.id if "id"               == attribute
       attribute_array << contact.firstname if "firstname" == attribute
-      attribute_array << contact.lastname if "lastname" == attribute
-      attribute_array << contact.email if "email" == attribute
-      attribute_array << contact.notes if "notes" == attribute
+      attribute_array << contact.lastname if "lastname"   == attribute
+      attribute_array << contact.email if "email"         == attribute
+      attribute_array << contact.notes if "notes"         == attribute
     end
     attribute_array
   end
@@ -46,7 +42,10 @@ class Database
   def display_single_contact(attribute)
   end
 
-  def modify
+  def modify(user_id, attribute, value)
+    contact = find_contact(user_id)
+    contact.send(attribute + "=", value)
+    # contact.update_contact(attribute, value)
   end
 
   def delete
@@ -59,11 +58,12 @@ end
 # CRUD
   # Create -> DONE
   # Read
-  # Update
+  # Update -> DONE
   # Delete
 
 # db = Database.new
 # db.add(1000, "Frank", "Budkis", "weeddad420@hotmail.com", "blazeit")
-# db.add(1001, "Fran", "Budis", "hotmail.com", "fgt")
-
 # p db.display_all
+# db.modify(1000, "firstname", "FRANCIS")
+# p db.display_all
+
