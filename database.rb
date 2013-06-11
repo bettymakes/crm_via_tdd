@@ -65,7 +65,7 @@ end
   # Create -> DONE
   # Read   -> DONE
   # Update -> DONE
-  # Delete..?
+  # Delete..? -> DONE
 
 # db = Database.new
 # db.add(1000, "Frank", "Budkis", "weeddad420@hotmail.com", "blazeit")

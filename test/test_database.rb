@@ -9,7 +9,6 @@ class TestDatabase < MiniTest::Unit::TestCase
     @db = Database.new
     @db.add(1000, "Frank", "Budkis", "weeddad420", "blazeit")
     @db.add(1001, "Fran", "Budis", "hotmail.com", "no")
-
   end
 
   def test_add_contact_object_to_array
@@ -20,8 +19,15 @@ class TestDatabase < MiniTest::Unit::TestCase
     assert_equal "blazeit",                 @db.contacts[0].notes
   end
 
+  def test_add_contact_false
+    refute_equal 9999,                      @db.contacts[0].id
+  end
+
   def test_contact_lookup_helper_method
     assert @db.find_contact(1000)
+  end
+
+  def test_contact_lookup_helper_false
     assert_equal nil, @db.find_contact(999)
   end
 
@@ -32,11 +38,6 @@ class TestDatabase < MiniTest::Unit::TestCase
     assert_equal ["weeddad420", "hotmail.com"], @db.display_by_attribute("email")
     assert_equal ["Budkis", "Budis"],           @db.display_by_attribute("lastname")
   end
-
-  # def test_display_all
-  #   @db.add(1000, "Frank", "Budkis", "weeddad420@hotmail.com", "blazeit")
-  #   @db.add(1001, "Fran", "Budis", "hotmail.com", "no")
-  # end
 
   def test_modify_contact
     contact = @db.find_contact(1000)
@@ -55,6 +56,7 @@ class TestDatabase < MiniTest::Unit::TestCase
     @db.remove(1001)
     assert @db.contacts.empty?
   end
+
 
 
 
