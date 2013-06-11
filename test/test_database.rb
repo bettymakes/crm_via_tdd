@@ -7,26 +7,25 @@ class TestDatabase < MiniTest::Unit::TestCase
 
   def setup
     @db = Database.new
+    @db.add(1000, "Frank", "Budkis", "weeddad420", "blazeit")
+    @db.add(1001, "Fran", "Budis", "hotmail.com", "no")
+
   end
 
   def test_add_contact_object_to_array
-    @db.add(1000, "Frank", "Budkis", "weeddad420@hotmail.com", "blazeit")
     assert_equal 1000,                      @db.contacts[0].id
     assert_equal "Frank",                   @db.contacts[0].firstname
     assert_equal "Budkis",                  @db.contacts[0].lastname
-    assert_equal "weeddad420@hotmail.com",  @db.contacts[0].email
+    assert_equal "weeddad420",              @db.contacts[0].email
     assert_equal "blazeit",                 @db.contacts[0].notes
   end
 
   def test_contact_lookup_helper_method
-    @db.add(1000, "Frank", "Budkis", "weeddad420@hotmail.com", "blazeit")
     assert @db.find_contact(1000)
     assert_equal nil, @db.find_contact(999)
   end
 
   def test_display_contacts_by_attribute
-    @db.add(1000, "Frank", "Budkis", "weeddad420", "blazeit")
-    @db.add(1001, "Fran", "Budis", "hotmail.com", "no")
     assert_equal [1000, 1001],                  @db.display_by_attribute("id")
     assert_equal ["Frank", "Fran"],             @db.display_by_attribute("firstname")
     assert_equal ["blazeit", "no"],            @db.display_by_attribute("notes")
@@ -40,7 +39,6 @@ class TestDatabase < MiniTest::Unit::TestCase
   # end
 
   def test_modify_contact
-    @db.add(1000, "Frank", "Budkis", "weeddad420@hotmail.com", "blazeit")
     contact = @db.find_contact(1000)
     assert_equal "Frank", contact.firstname
     @db.modify(1000, "firstname", "FRANCIS")
@@ -48,10 +46,14 @@ class TestDatabase < MiniTest::Unit::TestCase
   end
 
   def test_display_single_contact
-    @db.add(1000, "Frank", "Budkis", "weeddad420@hotmail.com", "blazeit")
-    @db.add(1001, "Fran", "Budis", "hotmail.com", "no")
     result = @db.display_single_contact(1000)
     assert result.include? "Frank"
+  end
+
+  def test_delete_contact
+    @db.remove(1000)
+    @db.remove(1001)
+    assert @db.contacts.empty?
   end
 
 

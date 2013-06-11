@@ -40,6 +40,8 @@ class Database
   end
 
   def display_single_contact(user_id)
+    contact = find_contact(user_id)
+    contact.display_contact
 
   end
 
@@ -49,8 +51,12 @@ class Database
     # contact.update_contact(attribute, value)
   end
 
-  def delete
+  def remove(user_id)
+    contact = find_contact(user_id)
+    @contacts.delete(contact)
   end
+
+
 
 end
 
@@ -58,9 +64,9 @@ end
 
 # CRUD
   # Create -> DONE
-  # Read
+  # Read   -> DONE
   # Update -> DONE
-  # Delete
+  # Delete..?
 
 # db = Database.new
 # db.add(1000, "Frank", "Budkis", "weeddad420@hotmail.com", "blazeit")
