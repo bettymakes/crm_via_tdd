@@ -3,17 +3,16 @@ require_relative "../contact"
 
 
 class TestContact < MiniTest::Unit::TestCase
-
-  def test_setup
+  def setup
     @contact = Contact.new(1000, "Frank", "Budkis", "email@email.com", "notes here")
   end
 
-  def test_display_contact
-    assert_equal "First name: #{@contact.firstname}\n
-                  Last name: #{@contact.lastname}\n
-                  Email: #{@contact.email}\n
-                  Notes: #{@contact.notes}",
-                  @contact.display_contact
+  def test_assert_accessors
+    assert_equal 1000, @contact.id
+    assert_equal "Frank", @contact.firstname
+    assert_equal "Budkis", @contact.lastname
+    assert_equal "email@email.com", @contact.email
+    assert_equal "notes here", @contact.notes
   end
 
 
