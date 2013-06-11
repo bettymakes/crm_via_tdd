@@ -42,7 +42,6 @@ class Database
   def display_single_contact(user_id)
     contact = find_contact(user_id)
     contact.display_contact
-
   end
 
   def modify(user_id, attribute, value)
