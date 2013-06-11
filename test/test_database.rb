@@ -27,9 +27,9 @@ class TestDatabase < MiniTest::Unit::TestCase
   def test_display_contacts_by_attribute
     @db.add(1000, "Frank", "Budkis", "weeddad420@hotmail.com", "blazeit")
     @db.add(1001, "Fran", "Budis", "hotmail.com", "fgt")
-    assert_equal [1000, 1001],        @db.display_by_attribute(id)
-    assert_equal ["Frank", "Fran"],   @db.display_by_attribute(firstname)
-    assert_equal ["blazeit", "fgt"],  @db.display_by_attribute(notes)
+    assert_equal [1000, 1001],        @db.display_by_attribute("id")
+    assert_equal ["Frank", "Fran"],   @db.display_by_attribute("firstname")
+    assert_equal ["blazeit", "fgt"],  @db.display_by_attribute("notes")
   end
 
   # def test_display_all
